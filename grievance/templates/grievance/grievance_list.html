@@ -1,0 +1,10 @@
+{% extends "grievance/grievance_base.html" %}
+
+{% block grievance_content %}
+  {% if not Grievances %}
+    <h1>You Have No Grievance</h1>
+  {% endif %}
+  {% for grievance in Grievances %}
+      {% include "grievance/_grievance.html" %}
+  {% endfor %}
+{% endblock grievance_content %}

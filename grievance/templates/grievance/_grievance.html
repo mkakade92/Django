@@ -1,0 +1,23 @@
+<div class="card card-with-shadow ">
+  <div class="card-body">  
+    <h2 class="card-title">Title : {{grievance.title|safe}}</h3>
+    <p class="card-text">Description : {{grievance.description}}</p>
+    <p class="card-text">Against : {{grievance.against}}</p>
+    <h5>
+      <time class='time'>
+        <a href="{% url 'grievance:single' username=grievance.user.username pk=grievance.pk %}">
+          {{grievance.create_Date}}
+        </a>
+      </time>
+    </h5>
+    <div class="card-footer">
+      {% if user.is_authenticated and grievance.user == user and not hide_delete %}
+      <a href="{% url 'grievance:delete' pk=grievance.pk %}" title="delete"
+      class='btn btn-simple'>
+      <i class="fas fa-trash-alt text-danger"  arai-hidden='true'></i>
+      <span class='text-danger icon-delete'>Delete</span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
